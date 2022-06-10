@@ -1,0 +1,262 @@
+local HorrificHousingGUI = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local open = Instance.new("TextButton")
+local main = Instance.new("Frame")
+local title = Instance.new("TextBox")
+local titledown = Instance.new("TextBox")
+local noclip = Instance.new("TextButton")
+local clicktp = Instance.new("TextButton")
+local ezwin = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+ 
+HorrificHousingGUI.Name = "Horrific Housing GUI"
+HorrificHousingGUI.Parent = game.CoreGui
+HorrificHousingGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ 
+frame.Name = "frame"
+frame.Parent = HorrificHousingGUI
+frame.Active = true
+frame.BackgroundColor3 = Color3.new(1, 1, 1)
+frame.Position = UDim2.new(0, 0, 0.584534764, 0)
+frame.Selectable = true
+frame.Size = UDim2.new(0, 158, 0, 20)
+frame.Style = Enum.FrameStyle.DropShadow
+frame.Draggble = true
+ 
+open.Name = "open"
+open.Parent = frame
+open.BackgroundColor3 = Color3.new(0, 0, 0)
+open.BackgroundTransparency = 0.80000001192093
+open.BorderSizePixel = 0
+open.Position = UDim2.new(0.17984356, 0, -1.25, 0)
+open.Size = UDim2.new(0, 91, 0, 17)
+open.AutoButtonColor = false
+open.Font = Enum.Font.SciFi
+open.Text = "Open"
+open.TextColor3 = Color3.new(0, 0, 0)
+open.TextScaled = true
+open.TextSize = 14
+open.TextWrapped = true
+open.MouseButton1Down:connect(function()
+main.Visible = true
+frame.Visible = false
+end)
+ 
+main.Name = "main"
+main.Parent = HorrificHousingGUI
+main.BackgroundColor3 = Color3.new(1, 1, 1)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.287713826, 0, 0.446920037, 0)
+main.Size = UDim2.new(0, 216, 0, 230)
+main.Visible = false
+main.Style = Enum.FrameStyle.DropShadow
+main.Active = true
+main.Draggable = true
+ 
+title.Archivable = false
+title.Name = "title"
+title.Parent = main
+title.Active = false
+title.BackgroundColor3 = Color3.new(0, 0, 0)
+title.Position = UDim2.new(-0.000929091126, 0, -0.000190004706, 0)
+title.Selectable = false
+title.Size = UDim2.new(0, 201, 0, 17)
+title.ClearTextOnFocus = false
+title.Font = Enum.Font.SciFi
+title.ShowNativeInput = false
+title.Text = "Horrific House GUI"
+title.TextColor3 = Color3.new(0.666667, 1, 1)
+title.TextScaled = true
+title.TextSize = 14
+title.TextWrapped = true
+ 
+titledown.Archivable = false
+titledown.Name = "titledown"
+titledown.Parent = main
+titledown.Active = false
+titledown.BackgroundColor3 = Color3.new(0, 0, 0)
+titledown.Position = UDim2.new(-0.000929091126, 0, 0.965027392, 0)
+titledown.Selectable = false
+titledown.Size = UDim2.new(0, 201, 0, 17)
+titledown.ClearTextOnFocus = false
+titledown.Font = Enum.Font.SciFi
+titledown.ShowNativeInput = false
+titledown.Text = "Horrific House GUI"
+titledown.TextColor3 = Color3.new(0.666667, 1, 1)
+titledown.TextScaled = true
+titledown.TextSize = 14
+titledown.TextWrapped = true
+ 
+noclip.Name = "noclip"
+noclip.Parent = main
+noclip.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+noclip.Position = UDim2.new(0.140775025, 0, 0.120869577, 0)
+noclip.Size = UDim2.new(0, 151, 0, 34)
+noclip.Font = Enum.Font.SciFi
+noclip.Text = "Noclip"
+noclip.TextColor3 = Color3.new(1, 1, 0)
+noclip.TextScaled = true
+noclip.TextSize = 14
+noclip.TextWrapped = true
+noclip.MouseButton1Down:connect(function()
+noclip = false
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+plr = game.Players.LocalPlayer
+mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+ 
+if key == "q" then
+noclip = not noclip
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+end)
+ 
+clicktp.Name = "clicktp"
+clicktp.Parent = main
+clicktp.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+clicktp.Position = UDim2.new(0.140775025, 0, 0.399130434, 0)
+clicktp.Size = UDim2.new(0, 151, 0, 34)
+clicktp.Font = Enum.Font.SciFi
+clicktp.Text = "ClickTp"
+clicktp.TextColor3 = Color3.new(0.333333, 1, 0)
+clicktp.TextScaled = true
+clicktp.TextSize = 14
+clicktp.TextWrapped = true
+clicktp.MouseButton1Down:connect(function()
+-- developed by elite_doge, 1,11,2015, 5:18 PM
+ 
+local enableKey = "e" -- what key you need to press to teleport
+ 
+------------------------------------
+-- getting needed locals
+local p = game.Players.LocalPlayer
+local mouse = p:GetMouse()
+local char = p.Character
+-- creating gui creation functions
+function setProperties(gui,t)
+    gui.BackgroundColor3 = Color3.new(0,0,0)
+    gui.BackgroundTransparency = t
+    gui.BorderSizePixel = 0
+end
+ 
+function setText(gui,te)
+    gui.TextStrokeTransparency = 0
+    gui.TextStrokeColor3 = Color3.new(255,255,255)
+    gui.TextColor3 = Color3.new(0,0,0)
+    gui.Text = te
+    gui.TextScaled = true
+    gui.TextXAlignment = Enum.TextXAlignment.Center
+end
+--- creating gui
+local gui = Instance.new("ScreenGui",p.PlayerGui)
+gui.Name = "TeleportationInfo"
+local f = Instance.new("Frame",gui)
+f.Size = UDim2.new(0.2,0,0.4,0)
+f.Position = UDim2.new(1,0,0.3,0)
+setProperties(f,0.5)
+local open = Instance.new("TextButton",gui)
+open.Name = "Open"
+setProperties(open,0.5)
+setText(open,"Tele Help")
+open.Size = UDim2.new(0.1,0,0.05,0)
+open.Position = UDim2.new(1 - open.Size.X.Scale,0,0.5,0)
+local text = Instance.new("TextLabel",f)
+text.Name = "Text"
+setProperties(text,1)
+text.Size = UDim2.new(1,0,0.8,0)
+setText(text,"Hold 'e' and click where you want to teleport. Click on this gui to close.")
+local name = "elite_doge"
+local text2  = text:Clone()
+text2.Parent = text.Parent
+text2.Size = UDim2.new(1,0,0.2,0)
+text2.Position = UDim2.new(0,0,0.8,0)
+text2.Name = "Creator"
+local isOpen = false
+local close = Instance.new("TextButton",f)
+close.Name = "Close"
+text2.Text = "Made by scripter#4863"
+setProperties(close,1)
+close.Visible = false
+close.Text = ""
+close.Size = UDim2.new(1,0,1,0)
+-- creating gui functions
+close.MouseButton1Down:connect(function()
+    if isOpen == true then
+        f:TweenPosition(UDim2.new(1,0,0.3,0),"InOut","Quad",1,true)
+        open:TweenPosition(UDim2.new(1 - open.Size.X.Scale,0,0.5,0),"InOut","Quad",1,true)
+        isOpen = false
+        close.Visible = false
+    else
+        close.Visible = false
+        open:TweenPosition(UDim2.new(1,0,0.5,0),"InOut","Quad",1,true)
+    end
+end)
+ 
+open.MouseButton1Down:connect(function()
+    if isOpen == false then
+        isOpen = true
+        f:TweenPosition(UDim2.new(1 - f.Size.X.Scale,0,0.3,0),"InOut","Quad",1,true)
+        open:TweenPosition(UDim2.new(1,0,0.5,0),"InOut","Quad",1,true)
+        close.Visible = true
+    end
+end)
+-- click and keydown functions
+local enabled = false
+ 
+mouse.KeyDown:connect(function(key)
+    key = key:lower()
+    if key == "e" then
+        enabled = true
+    end
+end)
+ 
+mouse.KeyUp:connect(function(key)
+    key = key:lower()
+    if key == "e" then
+        enabled = false
+    end
+end)
+ 
+mouse.Button1Down:connect(function()
+    if char and enabled == true then
+        char.HumanoidRootPart.CFrame = mouse.Hit + Vector3.new(0,7,0)
+    end
+end)
+end)
+ 
+ezwin.Name = "ezwin"
+ezwin.Parent = main
+ezwin.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+ezwin.Position = UDim2.new(0.342952311, 0, 0.651669025, 0)
+ezwin.Size = UDim2.new(0, 151, 0, 34)
+ezwin.Font = Enum.Font.SciFi
+ezwin.Text = "Ez win"
+ezwin.TextColor3 = Color3.new(0, 1, 1)
+ezwin.TextScaled = true
+ezwin.TextSize = 14
+ezwin.TextWrapped = true
+ezwin.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21.8475571, 6.14766121, -16.8852406)
+end)
+ 
+ 
+close.Name = "close"
+close.Parent = main
+close.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+close.Position = UDim2.new(0.580899477, 0, 0.456387252, 0)
+close.Size = UDim2.new(0, 20, 0, 16)
+close.Font = Enum.Font.SciFi
+close.Text = "X"
+close.TextColor3 = Color3.new(0, 1, 1)
+close.TextScaled = true
+close.TextSize = 14
+close.TextWrapped = true
+close.MouseButton1Down:connect(function()
+frame.Visible = true
+main.Visible = false
+end)
